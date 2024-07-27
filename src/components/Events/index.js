@@ -48,20 +48,19 @@ const eventsList = [
   },
 ]
 
-
 class Events extends Component {
   state = {
-    activeEventId= '',
+    activeEventId: '',
   }
 
   getActiveEventRegistrationStatus = () => {
     const {activeEventId} = this.state
-    const activeEventDetails = eventsList.find (
-      event => event.id === activeEventId
+    const activeEventDetails = eventsList.find(
+      event => event.id === activeEventId,
     )
     if (activeEventDetails) {
       return activeEventDetails.registrationStatus
-    }  
+    }
     return ''
   }
 
@@ -73,28 +72,29 @@ class Events extends Component {
     const {activeEventId} = this.state
     return (
       <ul className="events-list">
-       {eventsList.map(eachEvent => (
-        <EventItem
-          key={eachEvent.id}
-          eventDetails={eachEvent}
-          setActiveEventId={this.setActiveEventId}
-          isActive={eachEvent.id === activeId}
-         /> 
+        {eventsList.map(eachEvent => (
+          <EventItem
+            key={eachEvent.id}
+            eventDetails={eachEvent}
+            setActiveEventId={this.setActiveEventId}
+            isActive={eachEvent.id === activeId}
+          />
+        ))}
       </ul>
-       )    
+    )
   }
-  
+
   render() {
     return (
       <div className="events-container">
-       <div className="events-content">
-         <h1 className="heading">Events</h1>
-       </div>
-       <ActiveEventRegistrationDetails
-         activeEventRegistrationStatus={this.getActiveEventRegistrationStatus()}
-       />  
+        <div className="events-content">
+          <h1 className="heading">Events</h1>
+        </div>
+          '../ActiveEventRegistrationDetails'
+          activeEventRegistrationStatus={this.getActiveEventRegistrationStatus()}
+        />
       </div>
-    )  
+    )
   }
 }
 
